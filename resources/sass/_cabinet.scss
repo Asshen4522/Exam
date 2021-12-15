@@ -1,0 +1,20 @@
+.cabinet{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.cabinet__blocks{
+    text-align: left;
+    width: 50%;
+}
+.cabinet__blocks-left{
+    font-size: 40px;
+}
+
+.cabinet__button{
+    font-size: 30px;
+    align-items: center;
+}
+.cabinet__forms{
+    width: 100%;
+}

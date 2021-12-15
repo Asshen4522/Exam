@@ -1,0 +1,25 @@
+:root{
+    --color-main: rgb(223, 248, 241);
+    --color-conc: rgb(6, 250, 250);
+    --color-header: rgb(94, 182, 255);
+    --color-buttons: rgb(48, 51, 216);
+
+}
+
+@font-face {
+    font-family: "Amatic_SC-B";
+    src: url(/fonts/Amatic_SC/AmaticSC-Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: "Amatic_SC-R";
+    src: url(/fonts/Amatic_SC/AmaticSC-Regular.ttf);
+  }
+
+.font-reg{
+    font-family: "Amatic_SC-R";
+}
+
+.font-bold{
+    font-family: "Amatic_SC-B";
+}

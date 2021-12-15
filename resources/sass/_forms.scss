@@ -1,0 +1,33 @@
+.form__box{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-self: center;
+}
+
+.form__input{
+    // text-align: center;
+    margin-top: 20px;
+    padding: 12px 8px;
+    background-color: aquamarine;
+}
+
+.form__error {
+    margin-top: 4px;
+    color: tomato;
+}
+
+.form__submit {
+    text-align: center;
+    margin-top: 20px;
+    padding: 12px 8px;
+    background-color: aquamarine;
+}
+
+.regSubmit {
+    display: none;
+}
+
+.authSubmit {
+    display: none;
+}

@@ -1,0 +1,14 @@
+.entry{
+    margin-left: 200px;
+    margin-right: 200px;
+    font-size: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    padding-top: 50px;
+}
+
+.entry__orders{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
