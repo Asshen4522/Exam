@@ -14,7 +14,7 @@ if (registerForm) {
 
         const inputs = Array.from(registerForm.querySelectorAll('.form__input'));
         if (inputs.every(input => input.validity.valid)) {
-            const formTrigger = registerForm.querySelector("button.regSubmit");
+            const formTrigger = registerForm.querySelector("button.Submit");
             const event = new MouseEvent('click')
 
             formTrigger.dispatchEvent(event)
@@ -97,6 +97,7 @@ function renderError(element, message) {
     // console.log('render', elementName);
     const errorContainer = registerForm.querySelector(`[data-error-name="${elementName}"]`)
     errorContainer.textContent = message
+    errorContainer.style.height = errorContainer.scrollHeight +'px'
 }
 
 
@@ -110,6 +111,7 @@ function hideError(element) {
     // console.log('hide', elementName);
     const errorContainer = registerForm.querySelector('[data-error-name="' + elementName + '"]')
     errorContainer.textContent = "";
+    errorContainer.style.height = '0'
 }
 
 //Валидация ФИО
@@ -118,13 +120,13 @@ function hideError(element) {
  * @returns {Boolean}
  */
 function validateFio(input) {
-    const reg = /[а-яА-Я]/g
+    const reg = /[а-яА-Я \-]/g
     const matches = input.value.match(reg)
     // если два пробела, то валидно
     if (input.value.split(' ').length === 3 && matches && (matches.length+2) == input.value.length) {
         hideError(input)
     } else {
-        renderError(input, 'ФИО введен не верно');
+        renderError(input, 'ФИО введен не верно: разрешены русские символы, два пробела и дефис');
     }
 }
 
@@ -151,7 +153,7 @@ function validatePasswords(password, confirmPassword) {
  */
 function valiadateLogin(input) {
 
-    const reg = /[a-zA-Z]/g
+    const reg = /[a-zA-Z \.]/g
     const matches = input.value.match(reg)
 
     if (matches && matches.length == input.value.length) {
@@ -159,6 +161,6 @@ function valiadateLogin(input) {
         validateRemote(input)
 
     } else {
-        renderError(input, 'Разрешены только латинские буквы')
+        renderError(input, 'В логине разрешены только английские буквы и точки')
     }
 }

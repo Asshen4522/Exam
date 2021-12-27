@@ -13,10 +13,10 @@ class Roles extends Migration
     public function up()
     {
         Role::create([
-            'name' => "user"
+            'name' => "пользователь"
         ]);
         Role::create([
-            'name' => "admin"
+            'name' => "админ"
         ]);
     }
 

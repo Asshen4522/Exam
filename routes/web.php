@@ -16,28 +16,16 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/', function () {
-    return redirect('/main');
-});
+Route::view('/', 'main');
 
-Route::get('/main', function () {
-    return view('main');
-})->name('main');
+Route::view('/main', 'main')->name('main');
 
-Route::get('/registration', function () {
-    return view('registration');
-});
+Route::view('/registration', 'registration');
 
-Route::get('/authorisation', function () {
-    return view('authorisation');
-});
+Route::view('/authorisation', 'authorisation');
 
-Route::get('/cabinet', function () {
-    $user = Auth::user();
-    $role = Role::where('id', $user->role_id)->get();
-    return view('cabinet', ["role" => $role[0]]);
-});
-
+Route::get('/cabinet', 'FunctionController@panel'); 
+Route::get('/master', 'FunctionController@panel');
 Route::post('/Registrate', 'UserController@register');
 Route::post('/Validate', 'UserController@validation');
 Route::post('/Authorisate', 'UserController@authorisate');

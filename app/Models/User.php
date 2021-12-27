@@ -40,12 +40,17 @@ class User extends Authenticatable
 
     public function getFio()
     {
-        return ($this->attributes['surname'] . ' ' . mb_substr($this->attributes['name'], 0, 1,)  . ' ' . $this->attributes['last_name']);
+        return ($this->attributes['surname'] . ' ' . mb_substr($this->attributes['name'], 0, 1,)  . ' ' . mb_substr($this->attributes['last_name'], 0, 1,));
+    }
+
+    public function getFullFio()
+    {
+        return ($this->attributes['surname'] . ' ' . $this->attributes['name']  . ' ' . $this->attributes['last_name']);
     }
 
     public function cabinet()
     {
-        $result = '<div> ФИО: '  . $this->getFio() . '</div> <div> Логин: '  . $this->attributes['login'] . '</div> <div> Электронная почта: '  . $this->attributes['email'] . '</div>';
+        $result = '<div> ФИО: '  . $this->getFullFio() . '</div> <div> Логин: '  . $this->attributes['login'] . '</div> <div> Электронная почта: '  . $this->attributes['email'] . '</div>';
         return $result;
     }
 }

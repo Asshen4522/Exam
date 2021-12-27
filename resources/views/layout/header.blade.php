@@ -1,7 +1,7 @@
 
 <header class="header">
     <div class="header__left">
-        <a href="/main" class="font-bold header__elem">Design.pro</a>
+        <a href="/main" class="header__elem"><img src="/img/logo/logo_ok.png" alt="Мастер.ОК" class="logo"></a>
     </div>
     <div class="header__right">
         <a href="/main" class="header__elem font-reg">Главная</a>

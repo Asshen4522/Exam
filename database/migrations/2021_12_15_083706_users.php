@@ -17,9 +17,9 @@ class Users extends Migration
             'name' => 'Администратор',
             'surname' => 'Админ',
             'last_name' => 'ВСРович',
-            'email' => 'admin@WSR.ru',
+            'email' => 'admin@remont.ru',
             'login' => 'admin',
-            'password' => Hash::make('WSR'),
+            'password' => Hash::make('remont'),
             'role_id' => 2
         ]);
     }

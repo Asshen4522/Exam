@@ -12,8 +12,8 @@
         <span class="form__error" data-error-name="login"></span>
         <input type="password" name="password" class="form__input" placeholder="Пароль" required>
         <span class="form__error" data-error-name="password"></span>
-        <button type="button" class="form__submit">Войти</button>
-        <button type="submit" class="authSubmit"></button>
+        <button type="button" class="form__submit font-bold">Войти</button>
+        <button type="submit" class="Submit"></button>
 
     </form>
 </div>

@@ -1,3 +1,5 @@
+// общие стили для всех форм (авторизации и регистрации)
+
 .form__box{
     display: flex;
     flex-direction: column;
@@ -9,25 +11,34 @@
     // text-align: center;
     margin-top: 20px;
     padding: 12px 8px;
-    background-color: aquamarine;
+    background-color: var(--color-conc);
+}
+
+.form__input::placeholder{
+    font-family: "CormorantSC-B";
+    color: black;
 }
 
 .form__error {
     margin-top: 4px;
-    color: tomato;
+    color: var(--color-header);
+    border: var(--color-buttons);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    transition: 1s;
+    height: 0px;
+    overflow: hidden;
+    font-family: "CormorantSC-R";
 }
 
 .form__submit {
     text-align: center;
     margin-top: 20px;
     padding: 12px 8px;
-    background-color: aquamarine;
+    background-color: var(--color-buttons);
 }
 
-.regSubmit {
-    display: none;
-}
-
-.authSubmit {
+.Submit {
     display: none;
 }

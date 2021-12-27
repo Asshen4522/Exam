@@ -19407,7 +19407,7 @@ if (authorForm) {
     if (inputs.every(function (input) {
       return input.validity.valid;
     })) {
-      var formTrigger = authorForm.querySelector("button.authSubmit");
+      var formTrigger = authorForm.querySelector("button.Submit");
       var event = new MouseEvent('click');
       formTrigger.dispatchEvent(event);
     }
@@ -19454,6 +19454,7 @@ function renderError(element, message) {
 
   var errorContainer = authorForm.querySelector("[data-error-name=\"".concat(elementName, "\"]"));
   errorContainer.textContent = message;
+  errorContainer.style.height = errorContainer.scrollHeight + 'px';
 }
 /**
  * 
@@ -19466,6 +19467,7 @@ function hideError(element) {
 
   var errorContainer = authorForm.querySelector('[data-error-name="' + elementName + '"]');
   errorContainer.textContent = "";
+  errorContainer.style.height = '0';
 }
 /** 
  * @param {HTMLInputElement} password 
@@ -19578,7 +19580,7 @@ if (registerForm) {
     if (inputs.every(function (input) {
       return input.validity.valid;
     })) {
-      var formTrigger = registerForm.querySelector("button.regSubmit");
+      var formTrigger = registerForm.querySelector("button.Submit");
       var event = new MouseEvent('click');
       formTrigger.dispatchEvent(event);
     }
@@ -19658,6 +19660,7 @@ function renderError(element, message) {
 
   var errorContainer = registerForm.querySelector("[data-error-name=\"".concat(elementName, "\"]"));
   errorContainer.textContent = message;
+  errorContainer.style.height = errorContainer.scrollHeight + 'px';
 } // скрытие ошибки
 
 /**
@@ -19671,6 +19674,7 @@ function hideError(element) {
 
   var errorContainer = registerForm.querySelector('[data-error-name="' + elementName + '"]');
   errorContainer.textContent = "";
+  errorContainer.style.height = '0';
 } //Валидация ФИО
 
 /**
@@ -19680,13 +19684,13 @@ function hideError(element) {
 
 
 function validateFio(input) {
-  var reg = /[а-яА-Я]/g;
+  var reg = /[а-яА-Я \-]/g;
   var matches = input.value.match(reg); // если два пробела, то валидно
 
   if (input.value.split(' ').length === 3 && matches && matches.length + 2 == input.value.length) {
     hideError(input);
   } else {
-    renderError(input, 'ФИО введен не верно');
+    renderError(input, 'ФИО введен не верно: разрешены русские символы, два пробела и дефис');
   }
 } //Валидация пароля
 
@@ -19714,14 +19718,14 @@ function validatePasswords(password, confirmPassword) {
 
 
 function valiadateLogin(input) {
-  var reg = /[a-zA-Z]/g;
+  var reg = /[a-zA-Z \.]/g;
   var matches = input.value.match(reg);
 
   if (matches && matches.length == input.value.length) {
     hideError(input);
     validateRemote(input);
   } else {
-    renderError(input, 'Разрешены только латинские буквы');
+    renderError(input, 'В логине разрешены только английские буквы и точки');
   }
 }
 
@@ -19745,8 +19749,8 @@ function valiadateLogin(input) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\OpenServer\domains\urban_development-main\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\OpenServer\domains\urban_development-main\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\OpenServer\domains\Exam\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OpenServer\domains\Exam\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

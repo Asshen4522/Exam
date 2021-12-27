@@ -17,10 +17,10 @@ class Statuses extends Migration
             'name' => "Новая"
         ]);
         Status::create([
-            'name' => "Принято в работу"
+            'name' => "Ремонтируется"
         ]);
         Status::create([
-            'name' => "Выполнено"
+            'name' => "Отремонтировано"
         ]);
     }
 

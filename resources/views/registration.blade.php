@@ -12,19 +12,19 @@
         <span class="form__error" data-error-name="FIO"></span>
         <input type="text" name="login" class="form__input" placeholder="Логин" required>
         <span class="form__error" data-error-name="login"></span>
-        <input type="email" name="email" class="form__input" placeholder="email" required>
+        <input type="email" name="email" class="form__input" placeholder="Email" required>
         <span class="form__error" data-error-name="email"></span>
         <input type="password" name="password" class="form__input" placeholder="Пароль" required>
         <span class="form__error" data-error-name="password"></span>
-        <input type="password" name="password_confirmed" class="form__input" placeholder="Подтверждение пароля" required>
+        <input type="password" name="password_confirmed" class="form__input" placeholder="Повтор пароля" required>
         <span class="form__error" data-error-name="password_confirmed"></span>
-        <label>
+        <label class="font-bold">
             <input type="checkbox" name="sogl" class="form__input" required>
-            Обработка пользовательских данных?
+            Согласие на обработку персональных данных
         </label>
         <span class="form__error" data-error-name="sogl"></span>
-        <button type="button" class="form__submit">Отправить</button>
-        <button type="submit" class="regSubmit"></button>
+        <button type="button" class="form__submit font-bold">Отправить</button>
+        <button type="submit" class="Submit"></button>
     </form>
 </div>
 @endsection

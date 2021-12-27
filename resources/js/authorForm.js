@@ -14,7 +14,7 @@ if (authorForm) {
 
         const inputs = Array.from(authorForm.querySelectorAll('.form__input'));
         if (inputs.every(input => input.validity.valid)) {
-            const formTrigger = authorForm.querySelector("button.authSubmit");
+            const formTrigger = authorForm.querySelector("button.Submit");
             const event = new MouseEvent('click')
 
             formTrigger.dispatchEvent(event)
@@ -60,6 +60,7 @@ function renderError(element, message) {
     // console.log('render', elementName);
     const errorContainer = authorForm.querySelector(`[data-error-name="${elementName}"]`)
     errorContainer.textContent = message
+    errorContainer.style.height = errorContainer.scrollHeight +'px'
 }
 
 /**
@@ -71,6 +72,7 @@ function hideError(element) {
     // console.log('hide', elementName);
     const errorContainer = authorForm.querySelector('[data-error-name="' + elementName + '"]')
     errorContainer.textContent = "";
+    errorContainer.style.height = '0'
 }
 
 /** 

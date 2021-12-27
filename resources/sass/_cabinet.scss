@@ -1,12 +1,16 @@
+//стили личного кабинета пользователя
+
 .cabinet{
     display: flex;
     flex-direction: row;
     width: 100%;
 }
+
 .cabinet__blocks{
     text-align: left;
     width: 50%;
 }
+
 .cabinet__blocks-left{
     font-size: 40px;
 }

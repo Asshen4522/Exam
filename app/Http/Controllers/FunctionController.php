@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 class FunctionController extends Controller
 {
@@ -33,5 +35,36 @@ class FunctionController extends Controller
             }
         }
         return $page;
+    } 
+
+    public function panel()
+    {
+        $user=Auth::user();
+        if (!$user){
+            return redirect('/main');
+        }
+        else{
+            if($user['role_id']==2){
+                if ($_SERVER["REDIRECT_URL"]=="/public/master") {
+                    return view('master');
+                }else{
+                    return redirect('/master');
+                }
+                
+            }
+            elseif($user['role_id']==1){
+                
+                if ($_SERVER["REDIRECT_URL"]=="/public/cabinet") {
+                    $categories = Category::all();
+                    return view('cabinet', ['categories' => $categories]);
+                }else{
+                    return redirect('/cabinet');
+                }
+
+            }
+            else{
+                return redirect('/main');
+            }
+        };
     }
 }
