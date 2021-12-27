@@ -14,10 +14,10 @@ class Users extends Migration
     public function up()
     {
         User::create([
-            'name' =>NULL,
-            'surname' => NULL,
-            'last_name' => NULL,
-            'email' => NULL,
+            'name' => 'Администратор',
+            'surname' => 'Админ',
+            'last_name' => 'ВСРович',
+            'email' => 'admin@WSR.ru',
             'login' => 'admin',
             'password' => Hash::make('WSR'),
             'role_id' => 2

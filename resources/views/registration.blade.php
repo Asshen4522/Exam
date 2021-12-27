@@ -12,7 +12,7 @@
         <span class="form__error" data-error-name="FIO"></span>
         <input type="text" name="login" class="form__input" placeholder="Логин" required>
         <span class="form__error" data-error-name="login"></span>
-        <input type="email" name="email" class="form__input" placeholder="Почта" required>
+        <input type="email" name="email" class="form__input" placeholder="email" required>
         <span class="form__error" data-error-name="email"></span>
         <input type="password" name="password" class="form__input" placeholder="Пароль" required>
         <span class="form__error" data-error-name="password"></span>
