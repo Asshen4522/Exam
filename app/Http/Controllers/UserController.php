@@ -17,16 +17,10 @@ class UserController extends Controller
         $this->validate($request, [
             'password' => 'required', 'confirmed',
         ]);
-        $FIO = $request->FIO;
-        $FIO = explode(" ", $FIO);
-        $name = $FIO[1];
-        $surname = $FIO[0];
-        unset($FIO[0]);
-        unset($FIO[1]);
         User::create([
-            'name' => $name,
-            'surname' => $surname,
-            'last_name' => implode(' ', $FIO),
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'last_name' => $request->patronymic,
             'login' => $request->login,
             'email' => $request->email,
             'password' => Hash::make($request->password),

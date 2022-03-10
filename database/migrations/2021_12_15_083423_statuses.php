@@ -14,13 +14,16 @@ class Statuses extends Migration
     public function up()
     {
         Status::create([
-            'name' => "Новая"
+            'name' => "Новый"
         ]);
         Status::create([
-            'name' => "Ремонтируется"
+            'name' => "В пути"
         ]);
         Status::create([
-            'name' => "Отремонтировано"
+            'name' => "Отменен"
+        ]);
+        Status::create([
+            'name' => "Выполнен"
         ]);
     }
 

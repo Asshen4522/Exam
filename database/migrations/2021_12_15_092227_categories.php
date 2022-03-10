@@ -13,16 +13,16 @@ class Categories extends Migration
     public function up()
     {
         Category::create([
-            'name' => '«Косметический ремонт»',
-            'description' => 'Ремонт с целью улучшения внешнего вида здания'
+            'name' => '«Струйный принтер»',
+            'description' => 'N/A'
         ]);
         Category::create([
-            'name' => '«Капитальный ремонт»',
-            'description' => 'Полный ремонт здания'
+            'name' => '«Лазерный принтер»',
+            'description' => 'N/A'
         ]);
         Category::create([
-            'name' => '«Ремонт электрики»',
-            'description' => 'Ремонт электросети здания'
+            'name' => '«Картридж»',
+            'description' => 'N/A'
         ]);
     }
     /**

@@ -5,12 +5,26 @@
     margin-right: 200px;
     font-size: 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
     padding-top: 50px;
-}
-
-.entry__orders{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.entry__header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+.entry__header-img{
+    width: 100%;
+    height: 100%;
+}
+
+.entry__header-text{
+    display: flex;
     justify-content: center;
 }

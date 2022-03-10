@@ -25,7 +25,7 @@ if (registerForm) {
 
 // проверка уникальности логина
 /**
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  */
 function validateRemote(input) {
     const ENDPOINT = '/Validate'
@@ -52,16 +52,20 @@ function validateRemote(input) {
 
 }
 
-//Начало валидации, прохордящей по списку 
+//Начало валидации, прохордящей по списку
 /**
- * @param {HTMLFormElement} form 
+ * @param {HTMLFormElement} form
  */
 function validate(form) {
     const inputs = Array.from(form.querySelectorAll('.form__input'));
 
     inputs.forEach(function (input) {
-        if (input.name === 'FIO') {
-            validateFio(input);
+        if (input.name === 'name') {
+            validateName(input);
+        } else if (input.name === 'surname') {
+            validateSurname(input);
+        }  else if (input.name === 'patronymic') {
+            validatePatronymic(input);
         } else if (input.name === 'password' || input.name === 'password_confirmed') {
             validatePasswords(form['password'], form['password_confirmed'])
         } else if (input.name === 'login') {
@@ -75,7 +79,7 @@ function validate(form) {
 
 //проверка валидности, проверяемой браузером (required в верстке)
 /**
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  */
 function validateInput(input) {
     if (!input.validity.valid) {
@@ -88,9 +92,9 @@ function validateInput(input) {
 
 //вывод ошибки
 /**
- * 
- * @param {HTMLInputElement} element 
- * @param {String} message 
+ *
+ * @param {HTMLInputElement} element
+ * @param {String} message
  */
 function renderError(element, message) {
     const elementName = element.name
@@ -103,8 +107,8 @@ function renderError(element, message) {
 
 // скрытие ошибки
 /**
- * 
- * @param {HTMLElement} element 
+ *
+ * @param {HTMLElement} element
  */
 function hideError(element) {
     const elementName = element.name
@@ -114,34 +118,64 @@ function hideError(element) {
     errorContainer.style.height = '0'
 }
 
-//Валидация ФИО
+//Валидация имени
 /**
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  * @returns {Boolean}
  */
-function validateFio(input) {
+function validateName(input) {
     const reg = /[а-яА-Я \-]/g
     const matches = input.value.match(reg)
-    // если два пробела, то валидно
-    if (input.value.split(' ').length === 3 && matches && (matches.length+2) == input.value.length) {
+    if (matches) {
         hideError(input)
     } else {
-        renderError(input, 'ФИО введен не верно: разрешены русские символы, два пробела и дефис');
+        renderError(input, 'Name введено не верно: разрешены русские символы, пробелы и тире');
     }
 }
 
+//Валидация фамилии
+/**
+ * @param {HTMLInputElement} input
+ * @returns {Boolean}
+ */
+ function validateSurname(input) {
+    const reg = /[а-яА-Я \-]/g
+    const matches = input.value.match(reg)
+    if (matches) {
+        hideError(input)
+    } else {
+        renderError(input, 'Surname введено не верно: разрешены русские символы, пробелы и тире');
+    }
+ }
+
+//Валидация отчества
+/**
+ * @param {HTMLInputElement} input
+ * @returns {Boolean}
+ */
+ function validatePatronymic(input) {
+    const reg = /[а-яА-Я \-]/g
+    const matches = input.value.match(reg)
+    if (matches) {
+        hideError(input)
+    } else {
+        renderError(input, 'patronymic введено не верно: разрешены русские символы, пробелы и тире');
+    }
+}
+
+
 //Валидация пароля
-/** 
- * @param {HTMLInputElement} password 
- * @param {HTMLInputElement} confirmPassword 
- * @returns 
+/**
+ * @param {HTMLInputElement} password
+ * @param {HTMLInputElement} confirmPassword
+ * @returns
  */
 function validatePasswords(password, confirmPassword) {
-    if (password.validity.valid && confirmPassword.validity.valid && password.value === confirmPassword.value) {
+    if ((password.value.length > 5)   && password.validity.valid && confirmPassword.validity.valid && password.value === confirmPassword.value) {
         hideError(password);
         hideError(confirmPassword)
     } else {
-        const message = 'Пароли должны совпадать'
+        const message = 'Пароль должен иметь минимум 6 символов и совпадать'
         renderError(password, message)
         renderError(confirmPassword, message)
     }
@@ -149,11 +183,11 @@ function validatePasswords(password, confirmPassword) {
 
 //валидация логина
 /**
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  */
 function valiadateLogin(input) {
 
-    const reg = /[a-zA-Z \.]/g
+    const reg = /[a-zA-Z\d\-]/g
     const matches = input.value.match(reg)
 
     if (matches && matches.length == input.value.length) {
@@ -161,6 +195,6 @@ function valiadateLogin(input) {
         validateRemote(input)
 
     } else {
-        renderError(input, 'В логине разрешены только английские буквы и точки')
+        renderError(input, 'В логине разрешены только английские буквы, цифры и тире')
     }
 }

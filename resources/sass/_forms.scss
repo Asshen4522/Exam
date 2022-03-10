@@ -1,5 +1,9 @@
 // общие стили для всех форм (авторизации и регистрации)
 
+.form__caption{
+    font-size: 40px;
+}
+
 .form__box{
     display: flex;
     flex-direction: column;

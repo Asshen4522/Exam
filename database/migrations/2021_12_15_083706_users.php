@@ -19,7 +19,7 @@ class Users extends Migration
             'last_name' => 'ВСРович',
             'email' => 'admin@remont.ru',
             'login' => 'admin',
-            'password' => Hash::make('remont'),
+            'password' => Hash::make('admin11'),
             'role_id' => 2
         ]);
     }

@@ -19540,24 +19540,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var menu_button = document.querySelector("#menu_button");
-var menu_list = document.querySelector("#menu_list");
 
-if (menu_button) {
-  menu_button.addEventListener("click", menu_toggle);
-}
-
-function menu_toggle() {
-  if (menu_list.classList.contains('header__account-menu-close')) {
-    menu_list.classList.add('header__account-menu-open');
-    menu_list.classList.remove('header__account-menu-close');
-  } else {
-    menu_list.classList.add('header__account-menu-close');
-    menu_list.classList.remove('header__account-menu-open');
-  }
-
-  console.log("есть");
-}
 
 /***/ }),
 
@@ -19588,7 +19571,7 @@ if (registerForm) {
 } // проверка уникальности логина
 
 /**
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  */
 
 
@@ -19613,18 +19596,22 @@ function validateRemote(input) {
       renderError(input, 'Пользователь с таким логином уже есть');
     }
   });
-} //Начало валидации, прохордящей по списку 
+} //Начало валидации, прохордящей по списку
 
 /**
- * @param {HTMLFormElement} form 
+ * @param {HTMLFormElement} form
  */
 
 
 function validate(form) {
   var inputs = Array.from(form.querySelectorAll('.form__input'));
   inputs.forEach(function (input) {
-    if (input.name === 'FIO') {
-      validateFio(input);
+    if (input.name === 'name') {
+      validateName(input);
+    } else if (input.name === 'surname') {
+      validateSurname(input);
+    } else if (input.name === 'patronymic') {
+      validatePatronymic(input);
     } else if (input.name === 'password' || input.name === 'password_confirmed') {
       validatePasswords(form['password'], form['password_confirmed']);
     } else if (input.name === 'login') {
@@ -19636,7 +19623,7 @@ function validate(form) {
 } //проверка валидности, проверяемой браузером (required в верстке)
 
 /**
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  */
 
 
@@ -19649,9 +19636,9 @@ function validateInput(input) {
 } //вывод ошибки
 
 /**
- * 
- * @param {HTMLInputElement} element 
- * @param {String} message 
+ *
+ * @param {HTMLInputElement} element
+ * @param {String} message
  */
 
 
@@ -19664,8 +19651,8 @@ function renderError(element, message) {
 } // скрытие ошибки
 
 /**
- * 
- * @param {HTMLElement} element 
+ *
+ * @param {HTMLElement} element
  */
 
 
@@ -19675,57 +19662,91 @@ function hideError(element) {
   var errorContainer = registerForm.querySelector('[data-error-name="' + elementName + '"]');
   errorContainer.textContent = "";
   errorContainer.style.height = '0';
-} //Валидация ФИО
+} //Валидация имени
 
 /**
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  * @returns {Boolean}
  */
 
 
-function validateFio(input) {
+function validateName(input) {
   var reg = /[а-яА-Я \-]/g;
-  var matches = input.value.match(reg); // если два пробела, то валидно
+  var matches = input.value.match(reg);
 
-  if (input.value.split(' ').length === 3 && matches && matches.length + 2 == input.value.length) {
+  if (matches) {
     hideError(input);
   } else {
-    renderError(input, 'ФИО введен не верно: разрешены русские символы, два пробела и дефис');
+    renderError(input, 'Name введено не верно: разрешены русские символы, пробелы и тире');
+  }
+} //Валидация фамилии
+
+/**
+ * @param {HTMLInputElement} input
+ * @returns {Boolean}
+ */
+
+
+function validateSurname(input) {
+  var reg = /[а-яА-Я \-]/g;
+  var matches = input.value.match(reg);
+
+  if (matches) {
+    hideError(input);
+  } else {
+    renderError(input, 'Surname введено не верно: разрешены русские символы, пробелы и тире');
+  }
+} //Валидация отчества
+
+/**
+ * @param {HTMLInputElement} input
+ * @returns {Boolean}
+ */
+
+
+function validatePatronymic(input) {
+  var reg = /[а-яА-Я \-]/g;
+  var matches = input.value.match(reg);
+
+  if (matches) {
+    hideError(input);
+  } else {
+    renderError(input, 'patronymic введено не верно: разрешены русские символы, пробелы и тире');
   }
 } //Валидация пароля
 
-/** 
- * @param {HTMLInputElement} password 
- * @param {HTMLInputElement} confirmPassword 
- * @returns 
+/**
+ * @param {HTMLInputElement} password
+ * @param {HTMLInputElement} confirmPassword
+ * @returns
  */
 
 
 function validatePasswords(password, confirmPassword) {
-  if (password.validity.valid && confirmPassword.validity.valid && password.value === confirmPassword.value) {
+  if (password.value.length > 5 && password.validity.valid && confirmPassword.validity.valid && password.value === confirmPassword.value) {
     hideError(password);
     hideError(confirmPassword);
   } else {
-    var message = 'Пароли должны совпадать';
+    var message = 'Пароль должен иметь минимум 6 символов и совпадать';
     renderError(password, message);
     renderError(confirmPassword, message);
   }
 } //валидация логина
 
 /**
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  */
 
 
 function valiadateLogin(input) {
-  var reg = /[a-zA-Z \.]/g;
+  var reg = /[a-zA-Z\d\-]/g;
   var matches = input.value.match(reg);
 
   if (matches && matches.length == input.value.length) {
     hideError(input);
     validateRemote(input);
   } else {
-    renderError(input, 'В логине разрешены только английские буквы и точки');
+    renderError(input, 'В логине разрешены только английские буквы, цифры и тире');
   }
 }
 

@@ -24,9 +24,10 @@ Route::view('/registration', 'registration');
 
 Route::view('/authorisation', 'authorisation');
 
-Route::get('/cabinet', 'FunctionController@panel'); 
-Route::get('/master', 'FunctionController@panel');
+Route::get('/cabinet', 'FunctionController@panel');
+Route::get('/admin', 'FunctionController@panel');
 Route::post('/Registrate', 'UserController@register');
 Route::post('/Validate', 'UserController@validation');
 Route::post('/Authorisate', 'UserController@authorisate');
 Route::get('/DeAuthorisate', 'UserController@unauthorisate');
+Route::post('/addCategory', 'AdminPanel@AddCategory');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class CreateGoodOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('good_order', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('status_id')->constrained('statuses');
-            $table->foreignId('user_id')->constrained('users');
-            $table->timestamps();
-
+            $table->foreignId('order_id')->constrained('orders');
+            $table->foreignId('good_id')->constrained('goods');
+            $table->integer('count');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('good_order');
     }
 }

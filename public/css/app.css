@@ -7,12 +7,12 @@
 
 @font-face {
   font-family: "CormorantSC-B";
-  src: url(/public/fonts/CormorantSC/CormorantSC-Bold.ttf);
+  src: url(/fonts/CormorantSC/CormorantSC-Bold.ttf);
 }
 
 @font-face {
   font-family: "CormorantSC-R";
-  src: url(/public/fonts/CormorantSC/CormorantSC-Light.ttf);
+  src: url(/fonts/CormorantSC/CormorantSC-Light.ttf);
 }
 
 .font-reg {
@@ -117,12 +117,30 @@ button.header__elem {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-top: 50px;
-}
-
-.entry__orders {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.entry__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.entry__header-img {
+  width: 100%;
+  height: 100%;
+}
+
+.entry__header-text {
+  display: flex;
+  justify-content: center;
+}
+
+.form__caption {
+  font-size: 40px;
 }
 
 .form__box {
